@@ -1,7 +1,17 @@
 #!/usr/bin/env nextflow
 
+def maybe_local(fname){
+    // Address the special case of using test files in this project
+    // when running in batchman, or more generally, run-from-git.
+    if(file(fname).exists() || fname.startsWith('s3://')){
+        return file(fname)
+    }else{
+        file("$workflow.projectDir/" + fname)
+    }
+}
+
 fastq_pair_ch = Channel.fromFilePairs(params.run + '/*_R{1,2}*.fastq.gz', flat:true)
-run = Channel.fromPath(params.run, type: 'dir')
+run = Channel.value(maybe_local(params.run))
 
 process fastqc {
 
