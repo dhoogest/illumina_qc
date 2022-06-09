@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "run": {
+      "title": "Directory containing Illumina Reads and InterOp Data (s3://)",
+      "type": "string"
+    },
+  "required": [
+    "run"
+  ],
+  "type": "object"
+  }
+}
