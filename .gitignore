@@ -1,6 +1,6 @@
-*.nextflow
-nexflow
-./work*
+*.nextflow*
+nextflow
+work/
 *multiqc_report.html
 *interop_summary.txt
 *interop_idx_summary.txt
