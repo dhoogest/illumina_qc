@@ -1,19 +1,19 @@
-## Simple QC workflow using Nextflow + AWS Batch
+## Simple Illumina QC workflow:  Nextflow + AWS Batch
 
 **Pipeline:**
 1.  Run fastqc for pairs of fastq.gz files with paired-end reads
-2.  Run multiqc on all results of step 1
+2.  Run illumina summary commands on InterOp output (see [here](http://illumina.github.io/interop/index.html) for more info)
+3.  Run multiqc on all results of step 1
 
-**Params:** 
+**Params:**
 
-`input_folder` -- local directory or s3 bucket containing fastq.gz files with paired-end reads
-
-`output_folder` -- local directory, where multiqc_report.html will be created (or copied to from s3 bucket)
+- `run`:local directory or s3 bucket containing fastq.gz files with paired-end reads along with
+		Illumina InterOp, RunInfo.xml, runParameters.xml files.
 
 ### Running locally
 Make sure that fastqc and multiqc installed and run
 ~~~~
-nextflow main.nf -profile standard
+nextflow main.nf -profile standard --run test
 ~~~~
 
 
