@@ -18,13 +18,7 @@ nextflow main.nf -profile standard --run test
 
 
 ### Running with AWS Batch
-Get AWS credentials for nextflow-user, set environmental variables
+Get AWS credentials for AWS via `saml2aws login` and run:
 ~~~~
-export AWS_ACCESS_KEY_ID=<nextflow-user access key id>
-export AWS_SECRET_ACCESS_KEY=<nextflow-user secret access key>
-export AWS_DEFAULT_REGION='us-west-2'
-~~~~
-and run
-~~~~
-nextflow main.nf -profile batch
+nextflow main.nf -profile uw_batch --run {path to run}
 ~~~~
